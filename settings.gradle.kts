@@ -21,3 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "CatTechnicalChallenge"
 include(":app")
+include(":mod-http-core")
+include(":mod-data-breeds")
+include(":mod-feature-breeds")
+include(":mod-utils-test")

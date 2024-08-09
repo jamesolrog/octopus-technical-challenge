@@ -1,21 +1,58 @@
 [versions]
-agp = "8.6.0-alpha05"
-kotlin = "1.9.0"
-coreKtx = "1.13.1"
+
+# Core
+agp = "8.5.1"
+kotlin = "2.0.0"
+core-ktx = "1.13.1"
+appcompat = "1.7.0"
+lifecycle-runtime-ktx = "2.8.4"
+
+# UI
+composeBom = "2024.06.00"
+compose-compiler-version = "1.5.15"
+
+# Navigation
+navigation-compose = "2.7.7"
+
+# Activities
+activityCompose = "1.9.1"
+
+# Images
+coil-bom = "2.6.0"
+
+# Networking (Retrofit)
+retrofit = "2.9.0"
+okhttp-logging = "4.12.0"
+
+# Hilt (Dependency Injection)
+hilt-navigation-compose = "1.2.0"
+hilt-android = "2.52"
+ksp = "2.0.0-1.0.21"
+
+# Kotlin Coroutines
+coroutines = "1.8.0"
+
+#Testing
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-lifecycleRuntimeKtx = "2.8.4"
-activityCompose = "1.9.1"
-composeBom = "2024.04.01"
+mockito = "5.3.1"
 
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+
+# Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-android" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt-android" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
+
+# Compose
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
@@ -24,8 +61,45 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-compiler = { group = "androidx.compose.compiler", name = "compiler", version.ref = "compose-compiler-version"}
+
+# Navigation
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation-compose" }
+
+# Coil
+coil-bom = { group = "io.coil-kt", name = "coil-bom", version.ref = "coil-bom" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose" }
+
+# Retrofit
+retrofit = { group = "com.squareup.retrofit2", name  = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name  = "converter-gson", version.ref = "retrofit" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp-logging" }
+
+# Mockito
+mockito = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito"}
+
+# Coroutines
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+
+[bundles]
+compose-ui-core = [
+    "androidx-ui",
+    "androidx-ui-graphics",
+    "androidx-ui-tooling-preview",
+    "androidx-material3",
+    "androidx-compose-compiler",
+]
+retrofit = [
+    "retrofit",
+    "retrofit-gson",
+    "okhttp-logging",
+]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt-android" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 
